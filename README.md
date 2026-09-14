@@ -1,5 +1,9 @@
 # Purchasing Agent
 
+**Live demo:** https://ai-purchasing-agent-vsun.onrender.com
+(free hosting tier — if it's been idle for 15+ minutes the first load takes
+30-60 seconds to wake up, then it's instant)
+
 A buyer support agent for a quick-commerce purchasing workflow. Given a
 purchasing situation — a system recommendation, a supplier shortfall, a
 demand signal that's moved, or a constraint that blocks the obvious action —
@@ -60,6 +64,18 @@ flowchart TB
     Agent -.escalates to.-> Human
     Human -.approve/reject.-> API
 ```
+
+**Tech stack**
+
+| Layer | Choice |
+|---|---|
+| Language | Python 3.11 |
+| Web framework | FastAPI + Uvicorn |
+| Data | SQLite (stdlib `sqlite3`, no ORM) |
+| Frontend | Vanilla JS / HTML / CSS, single file, no build step |
+| Testing | pytest |
+| Hosting | Render (free web service), deployed straight from this repo |
+| Diagram / reporting | matplotlib + ReportLab (used to generate the PDF write-up, not part of the running app) |
 
 **Backend** — Python, FastAPI, SQLite (stdlib `sqlite3`, no ORM). Seeded from
 `backend/seed_data.json` on every startup, so the demo is reproducible.
